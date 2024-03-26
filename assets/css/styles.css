@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+  
+  overflow-x: hidden;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* .mainbody {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    background: url(../images/main-page.png) center/cover no-repeat;
+    padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+} */
+
+.mainbody {
+  overflow: auto; /* Enable scrolling */
+}
+
+.main-image-container {
+  max-width: 100%; /* Ensure the image does not exceed the screen width */
+  overflow: auto; /* Enable scrolling if the image exceeds container dimensions */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .closeIcon {
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  right: 10%;
+}
+
+.pop {
+    position: absolute;
+    right: 0;
+    z-index: 20;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    max-width: 750px;
+}
+
+.pop a img {
+    margin-left: -14px;
+}
+
+
+.container {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 750px;
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #000000de;
+  }
+
+  #gif {
+    display: none;
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  #image {
+    display: none;
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    animation: zoomIn 1s ease forwards;
+  }
+
+  #popupImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .footer-text {
+    display: none;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    bottom: 5%;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .footer-text a {
+    color: #2196f3;
+    text-decoration: underline;
+  }
+
+  .footer-text p button img {
+    margin-bottom: -9px;
+  }
+
+  #shareButton {
+    background: transparent;
+    border: 0;
+  }
+
+  
