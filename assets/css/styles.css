@@ -200,7 +200,7 @@ html, body {
   }
   .inputbg {
     position: absolute;
-    top: 25%;
+    top: 21%;
     background-color: white;
     padding: 4px;
     border-radius: 4px;
@@ -210,7 +210,7 @@ html, body {
   position: absolute;
   background: transparent;
   border: 0;
-  top: 32%;
+  top: 28%;
 }
 .inputbg span.divider {
   color: gray;
