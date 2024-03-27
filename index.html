@@ -28,18 +28,21 @@
     <div class="mainbody">
         <div class="main-image-container">
             <!-- Main image -->
+            
             <div class="formwrap"> 
+                <img class="title" src="./assets/images/headertitle.png">
                 <div class="inputbg">
                     <div class="def">
                         <span class="countrycode">+91 </span><span class="divider">┃</span>
                     </div>
                     <input type="text" id="phoneNumberInput" placeholder="ENTER YOUR MOBILE NUMBER">
-                    <span class="clear-icon" id="clearIcon">&times;</span>
+                    <!-- <span class="clear-icon" id="clearIcon">&times;</span> -->
                 </div>
                 <button id="openButton"><img src="./assets/images/openbtn.png" alt="open button"></button>
                 
             </div>
-            <img src="./assets/images/mainpage.png" alt="Main Image">
+            <img src="./assets/images/imagebottom.png">
+            <!-- <img src="./assets/images/mainbackground.png" alt="Main Image"> -->
         </div>
         <!-- Other content -->
     </div>
@@ -99,11 +102,11 @@
             });
 
             // Add event listener for the clear icon
-            clearIcon.addEventListener('click', function() {
-                phoneNumberInput.value = ''; // Clear the input field
-                clearIcon.style.display = 'none'; // Hide the clear icon after clearing input
-                phoneNumberInput.placeholder = defaultPlaceholder; // Restore default placeholder text
-            });
+            // clearIcon.addEventListener('click', function() {
+            //     phoneNumberInput.value = ''; // Clear the input field
+            //     clearIcon.style.display = 'none'; // Hide the clear icon after clearing input
+            //     phoneNumberInput.placeholder = defaultPlaceholder; // Restore default placeholder text
+            // });
     
             openButton.addEventListener('click', function() {
                 var phoneNumber = phoneNumberInput.value;
