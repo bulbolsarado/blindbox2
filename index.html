@@ -28,11 +28,17 @@
     <div class="mainbody">
         <div class="main-image-container">
             <!-- Main image -->
-            <div class="inputbg">
-                <span class="countrycode">+91 </span><span class="divider">┃</span>
-                <input type="text" id="phoneNumberInput" placeholder="ENTER YOUR MOBILE NUMBER">
+            <div class="formwrap"> 
+                <div class="inputbg">
+                    <div class="def">
+                        <span class="countrycode">+91 </span><span class="divider">┃</span>
+                    </div>
+                    <input type="text" id="phoneNumberInput" placeholder="ENTER YOUR MOBILE NUMBER">
+                    <span class="clear-icon" id="clearIcon">&times;</span>
+                </div>
+                <button id="openButton"><img src="./assets/images/openbtn.png" alt="open button"></button>
+                
             </div>
-            <button id="openButton"><img src="./assets/images/openbtn.png" alt="open button"></button>
             <img src="./assets/images/mainpage.png" alt="Main Image">
         </div>
         <!-- Other content -->
@@ -73,7 +79,8 @@
             var containerBg = document.getElementById('containerBg');
             var openButton = document.getElementById('openButton');
             var phoneNumberInput = document.getElementById('phoneNumberInput');
-            
+            var clearIcon = document.getElementById('clearIcon');
+            var defaultPlaceholder = phoneNumberInput.getAttribute('placeholder');
 
             popupImage.style.display = 'none';
             closeButton.style.display = 'none';
@@ -83,6 +90,19 @@
             phoneNumberInput.addEventListener('focus', function() {
                 // Clear the placeholder text
                 phoneNumberInput.placeholder = '';
+            });
+
+            // Add event listener for input event (when typing)
+            phoneNumberInput.addEventListener('input', function() {
+                // Show or hide the clear icon based on input value
+                clearIcon.style.display = phoneNumberInput.value.trim() ? 'block' : 'none';
+            });
+
+            // Add event listener for the clear icon
+            clearIcon.addEventListener('click', function() {
+                phoneNumberInput.value = ''; // Clear the input field
+                clearIcon.style.display = 'none'; // Hide the clear icon after clearing input
+                phoneNumberInput.placeholder = defaultPlaceholder; // Restore default placeholder text
             });
     
             openButton.addEventListener('click', function() {
