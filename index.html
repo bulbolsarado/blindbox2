@@ -19,6 +19,7 @@
     <div id="containerBg" class="container-bg">
         <div class="container">
             <!-- Popup image container -->
+            
             <img id="closeButton" class="closeIcon" src="./assets/images/xbutton.png" alt="close">
             <img id="popupImage" alt="Popup Image">
         </div>
@@ -27,121 +28,137 @@
     <div class="mainbody">
         <div class="main-image-container">
             <!-- Main image -->
-            <img src="./assets/images/main-page.png" alt="Main Image">
+            <div class="inputbg">
+                <span class="countrycode">+91</span>
+                <input type="text" id="phoneNumberInput" placeholder="ENTER YOUR MOBILE NUMBER">
+            </div>
+            <button id="openButton"><img src="./assets/images/openbtn.png" alt="open button"></button>
+            <img src="./assets/images/mainpage.png" alt="Main Image">
         </div>
         <!-- Other content -->
     </div>
 
     <script>
         // Execute when the window loads
-    window.onload = function() {
-        var popupImage = document.getElementById('popupImage');
-        var closeButton = document.getElementById('closeButton');
-        var footerText = document.querySelector('.footer-text');
-        var containerBg = document.getElementById('containerBg');
+        var randomIndex;
         var imageSources = [
-            // 'file:///C:/Users/Administrator/Documents/GitHub/blindbox3/assets/images/modal_teenpattiyes.png',
-            // 'file:///C:/Users/Administrator/Documents/GitHub/blindbox3/assets/images/modal_rummyyes.png',
-            // 'file:///C:/Users/Administrator/Documents/GitHub/blindbox3/assets/images/modal_teenpattivip.png',
-            // 'file:///C:/Users/Administrator/Documents/GitHub/blindbox3/assets/images/modal_rummyvip.png',
-            // 'file:///C:/Users/Administrator/Documents/GitHub/blindbox3/assets/images/modal_svip3patti.png',
-            // 'file:///C:/Users/Administrator/Documents/GitHub/blindbox3/assets/images/modal_vip3patti.png',
-            // 'file:///C:/Users/Administrator/Documents/GitHub/blindbox3/assets/images/modal_rummytry.png'
-            'https://bulbolsarado.github.io/blindbox2/assets/images/modal_teenpattiyes.png',
-            'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummyyes.png',
-            'https://bulbolsarado.github.io/blindbox2/assets/images/modal_teenpattivip.png',
-            'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummyvip.png',
-            'https://bulbolsarado.github.io/blindbox2/assets/images/modal_svip3patti.png',
-            'https://bulbolsarado.github.io/blindbox2/assets/images/modal_vip3patti.png',
-            'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummytry.png'
-        ];
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_teenpattiyes.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_rummyyes.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_teenpattivip.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_rummyvip.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_svip3patti.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_vip3patti.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_rummytry.png'
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_teenpattiyes.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummyyes.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_teenpattivip.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummyvip.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_svip3patti.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_vip3patti.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummytry.png'
+                ];
+                var fileURLs = [
+                    'https://ossmm02.ersfdokm.com/TeenpattiYes-apk/TeenpattiYes-131536-channel-68686868.apk',
+                    'https://ossmm02.ersfdokm.com/RummyYesIPA/RummyYes-132920-channel-68686868.apk',
+                    'https://ossyd06.ersfdokm.com/teenpattivipAPK/teenpatti_vip-133813-channel-68686868.apk',
+                    'https://ossyd06.ersfdokm.com/RummyVIPAPK/RummyVIP-134200-channel-68686868.apk',
+                    'https://ossyd01.ersfdokm.com/svip3pattiagAPK/india_SVIP3Patti_2-channel-68686868.apk',
+                    'https://ossmm05.ersfdokm.com/vip3pattiAPK/vip3patti68686868.apk',
+                    'https://ossyd06.downwl.com/Rummytry/RummyTry-140026-channel-68686868.apk'
+                ];
+        window.onload = function() {
+            var popupImage = document.getElementById('popupImage');
+            var closeButton = document.getElementById('closeButton');
+            var footerText = document.querySelector('.footer-text');
+            var containerBg = document.getElementById('containerBg');
+            var openButton = document.getElementById('openButton');
+            var phoneNumberInput = document.getElementById('phoneNumberInput');
+            
 
-        var fileURLs = [
-            'https://ossmm02.ersfdokm.com/TeenpattiYes-apk/TeenpattiYes-131536-channel-68686868.apk',
-            'https://ossmm02.ersfdokm.com/RummyYesIPA/RummyYes-132920-channel-68686868.apk',
-            'https://ossyd06.ersfdokm.com/teenpattivipAPK/teenpatti_vip-133813-channel-68686868.apk',
-            'https://ossyd06.ersfdokm.com/RummyVIPAPK/RummyVIP-134200-channel-68686868.apk',
-            'https://ossyd01.ersfdokm.com/svip3pattiagAPK/india_SVIP3Patti_2-channel-68686868.apk',
-            'https://ossmm05.ersfdokm.com/vip3pattiAPK/vip3patti68686868.apk',
-            'https://ossyd06.downwl.com/Rummytry/RummyTry-140026-channel-68686868.apk'
-        ];
-
-        // Display a random popup image
-        var randomIndex = Math.floor(Math.random() * imageSources.length);
-        popupImage.src = imageSources[randomIndex];
-        popupImage.style.display = 'block';
-        footerText.style.display = 'block';
-        closeButton.style.display = 'block';
-        containerBg.style.display = 'block';
-
-        // Add click event listener to the popup image
-        popupImage.addEventListener('click', function() {
-            console.log('Popup image clicked');
-            // Get the index of the current image
-            var index = imageSources.indexOf(popupImage.src);
-            console.log('Index:', index);
-            // If the index is valid, use it to get the corresponding file URL
-            if (index !== -1 && index < fileURLs.length) {
-                var fileURL = fileURLs[index];
-                console.log('Downloading file:', fileURL);
-                // Create a hidden anchor element
-                var link = document.createElement('a');
-                link.href = fileURL;
-                link.setAttribute('download', '');
-                link.style.display = 'none';
-                document.body.appendChild(link);
-                // Simulate click on the hidden anchor element
-                link.click();
-                // Clean up after download
-                document.body.removeChild(link);
-            } else {
-                console.log('Invalid index or file URL');
-                console.log('Popup image source:', popupImage.src);
-                console.log('imageSources:', imageSources);
-
-            }
-        });
-
-
-        // Add click event listener to the close button
-        closeButton.addEventListener('click', function() {
-            // Hide the popup image and footer text
             popupImage.style.display = 'none';
-            footerText.style.display = 'none';
             closeButton.style.display = 'none';
+            footerText.style.display = 'none';
             containerBg.style.display = 'none';
-        });
 
-        // Get the share button element
-        var shareButton = document.getElementById('shareButton');
-
-        // Add click event listener to the share button
-        shareButton.addEventListener('click', function() {
-            // Create a temporary input element to hold the download link
-            var tempInput = document.createElement('input');
-            tempInput.value = fileURLs[randomIndex]; // Assuming fileURLs is accessible here
-            document.body.appendChild(tempInput);
-            
-            // Select the text in the input element
-            tempInput.select();
-            tempInput.setSelectionRange(0, 99999); /* For mobile devices */
-            
-            // Copy the text to the clipboard
-            document.execCommand('copy');
-            
-            // Remove the temporary input element
-            document.body.removeChild(tempInput);
-            
-            // Optionally, provide feedback to the user
-            alert('Download link copied to clipboard!');
-        });
-    };
-
-    function judgeClient() {
-            let client = '';
-            if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|iPod|iOS
+            phoneNumberInput.addEventListener('focus', function() {
+                // Clear the placeholder text
+                phoneNumberInput.placeholder = '';
+            });
+    
+            openButton.addEventListener('click', function() {
+                var phoneNumber = phoneNumberInput.value;
+                if (!phoneNumber) {
+                    alert('Please enter a phone number.');
+                    return;
+                }
+                
+                
+    
+                
+    
+                // Display a random popup image
+                // var randomIndex = Math.floor(Math.random() * imageSources.length);
+                randomIndex = Math.floor(Math.random() * imageSources.length);
+                popupImage.src = imageSources[randomIndex];
+                popupImage.style.display = 'block';
+                footerText.style.display = 'block';
+                closeButton.style.display = 'block';
+                containerBg.style.display = 'block';
+            });
+    
+            // Add click event listener to the popup image
+            popupImage.addEventListener('click', function() {
+                
+                var index = imageSources.indexOf(popupImage.src);
+                var fileURL = fileURLs[index];
+    
+                if (index !== -1 && index < fileURLs.length) {
+                    var fileURL = fileURLs[index];
+                    var link = document.createElement('a');
+                    link.href = fileURL;
+                    link.setAttribute('download', '');
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                console.log('Index:', index);
+                    console.log('Invalid index or file URL');
+                    console.log('File URL:', fileURL);
+                    console.log('Popup image clicked');
+                }
+            });
+    
+            // Add click event listener to the close button
+            closeButton.addEventListener('click', function() {
+                popupImage.style.display = 'none';
+                footerText.style.display = 'none';
+                closeButton.style.display = 'none';
+                containerBg.style.display = 'none';
+            });
+    
+            // Get the share button element
+            var shareButton = document.getElementById('shareButton');
+    
+            // Add click event listener to the share button
+            shareButton.addEventListener('click', function() {
+                var tempInput = document.createElement('input');
+                tempInput.value = fileURLs[randomIndex];
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, 99999); /* For mobile devices */
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('Download link copied to clipboard!');
+            });
+        };
+    
+        function judgeClient() {
+            var client = '';
+            var platform = navigator.platform;
+            if (platform.includes('iPhone') || platform.includes('iPad') || platform.includes('iPod') || platform.includes('iOS')) {
                 client = 'iOS';
-            } else if (/(Android)/i.test(navigator.userAgent)) { //判断Android
+            } else if (platform.includes('Android')) {
                 client = 'Android';
             } else {
                 client = 'PC';
@@ -149,6 +166,7 @@
             return client;
         }
     </script>
+    
 
     <!-- Tracking script -->
     <script>
