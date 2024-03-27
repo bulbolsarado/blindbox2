@@ -70,22 +70,25 @@ html, body {
     background-color: white;
     padding: 4px;
     border-radius: 4px;
+    width: 30%;
 }
 
 #phoneNumberInput {
-  width: 650px;
-  height: 70px;
-  border: 2px solid #5c0d08;
+  width: 100%;
+    height: 70px;
+    border: 2px solid #5c0d08;
     border-radius: 4px;
-    font-size: 24px;
+    font-size: 1.2rem;
     font-weight: 600;
-    text-align: center;
+    text-align: left;
+    padding-left: 8rem;
+    max-width: 439px;
 }
 
 .countrycode {
   position: absolute;
   top: 0.65rem;
-  left: 2rem;
+  left: 1rem;
   font-size: 50px;
   font-weight: 800;
 }
@@ -174,3 +177,26 @@ html, body {
   }
 
   
+  @media only screen and (max-width: 750px) {
+    #phoneNumberInput {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: left;
+      max-width: 386px;
+      padding-left: 130px;
+  }
+  .inputbg {
+    position: absolute;
+    top: 25%;
+    background-color: white;
+    padding: 4px;
+    border-radius: 4px;
+    width: 80%;
+}
+#openButton {
+  position: absolute;
+  background: transparent;
+  border: 0;
+  top: 32%;
+}
+}
