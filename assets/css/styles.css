@@ -272,7 +272,7 @@ html, body {
 .footer-text {
   display: none;
   position: fixed;
-  left: 20%;
+  left: 17%;
    transform: translateX(0); 
   z-index: 1000;
   bottom: 19%;
