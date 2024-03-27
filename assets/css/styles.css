@@ -269,5 +269,25 @@ html, body {
     top: 33%;
     right: 40px;
 }
+.footer-text {
+  display: none;
+  position: fixed;
+  left: 20%;
+   transform: translateX(0); 
+  z-index: 1000;
+  bottom: 19%;
+  color: white;
+  font-size: 1.2rem;
+  width: 100%;
+}
+#popupImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  position: fixed;
+  top: 7%;
+}
   }
   
