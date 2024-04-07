@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <!-- Include necessary JS libraries -->
+    <script type="text/javascript" src="./assets/js/jianrong.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+</head>
+<body>
+
+    <div class="footer-text">
+        <p>Notice: <br>
+            Invite your friend for +1 more blind gift <button id="shareButton"><img src="./assets/images/sharebtn.png" alt="share"></button>.</p>
+    </div>
+
+    <div id="containerBg" class="container-bg">
+        <div class="container">
+            <!-- Popup image container -->
+            
+            <img id="closeButton" class="closeIcon" src="./assets/images/xbutton.png" alt="close">
+            <img id="popupImage" alt="Popup Image">
+        </div>
+    </div>
+
+    <div class="mainbody">
+        <div class="main-image-container">
+            <!-- Main image -->
+            
+            <div class="formwrap"> 
+                <img class="title" src="./assets/images/headertitle.png">
+                <div class="inputbg">
+                    <div class="def">
+                        <span class="countrycode">+91 </span><span class="divider">┃</span>
+                    </div>
+                    <input type="text" id="phoneNumberInput" placeholder="ENTER YOUR MOBILE NUMBER">
+                    <!-- <span class="clear-icon" id="clearIcon">&times;</span> -->
+                </div>
+                <button id="openButton"><img src="./assets/images/openbtn.png" alt="open button"></button>
+                
+            </div>
+            <img src="./assets/images/imagebottom.png">
+            <!-- <img src="./assets/images/mainbackground.png" alt="Main Image"> -->
+        </div>
+        <!-- Other content -->
+    </div>
+
+    <script>
+        // Execute when the window loads
+        var randomIndex;
+        var imageSources = [
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_teenpattiyes.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_rummyyes.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_teenpattivip.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_rummyvip.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_svip3patti.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_vip3patti.png',
+                    // 'C:/Users/Administrator/Documents/GitHub/blindbox2/assets/images/modal_rummytry.png'
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_teenpattiyes.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummyyes.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_teenpattivip.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummyvip.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_svip3patti.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_vip3patti.png',
+                    'https://bulbolsarado.github.io/blindbox2/assets/images/modal_rummytry.png'
+                ];
+                var fileURLs = [
+                    'https://ossmm02.ersfdokm.com/TeenpattiYes-apk/TeenpattiYes-131536-channel-68686868.apk',
+                    'https://ossmm02.ersfdokm.com/RummyYesIPA/RummyYes-132920-channel-68686868.apk',
+                    'https://ossyd06.ersfdokm.com/teenpattivipAPK/teenpatti_vip-133813-channel-68686868.apk',
+                    'https://ossyd06.ersfdokm.com/RummyVIPAPK/RummyVIP-134200-channel-68686868.apk',
+                    'https://ossyd01.ersfdokm.com/svip3pattiagAPK/india_SVIP3Patti_2-channel-68686868.apk',
+                    'https://ossmm05.ersfdokm.com/vip3pattiAPK/vip3patti68686868.apk',
+                    'https://ossyd06.downwl.com/Rummytry/RummyTry-140026-channel-68686868.apk'
+                ];
+        window.onload = function() {
+            var popupImage = document.getElementById('popupImage');
+            var closeButton = document.getElementById('closeButton');
+            var footerText = document.querySelector('.footer-text');
+            var containerBg = document.getElementById('containerBg');
+            var openButton = document.getElementById('openButton');
+            var phoneNumberInput = document.getElementById('phoneNumberInput');
+            var clearIcon = document.getElementById('clearIcon');
+            var defaultPlaceholder = phoneNumberInput.getAttribute('placeholder');
+
+            popupImage.style.display = 'none';
+            closeButton.style.display = 'none';
+            footerText.style.display = 'none';
+            containerBg.style.display = 'none';
+
+            phoneNumberInput.addEventListener('focus', function() {
+                // Clear the placeholder text
+                phoneNumberInput.placeholder = '';
+            });
+
+            // Add event listener for input event (when typing)
+            phoneNumberInput.addEventListener('input', function() {
+                // Show or hide the clear icon based on input value
+                clearIcon.style.display = phoneNumberInput.value.trim() ? 'block' : 'none';
+            });
+
+            // Add event listener for the clear icon
+            // clearIcon.addEventListener('click', function() {
+            //     phoneNumberInput.value = ''; // Clear the input field
+            //     clearIcon.style.display = 'none'; // Hide the clear icon after clearing input
+            //     phoneNumberInput.placeholder = defaultPlaceholder; // Restore default placeholder text
+            // });
+    
+            openButton.addEventListener('click', function() {
+                var phoneNumber = phoneNumberInput.value;
+                if (!phoneNumber) {
+                    alert('Please enter a phone number.');
+                    return;
+                }
+                
+                
+    
+                
+    
+                // Display a random popup image
+                // var randomIndex = Math.floor(Math.random() * imageSources.length);
+                randomIndex = Math.floor(Math.random() * imageSources.length);
+                popupImage.src = imageSources[randomIndex];
+                popupImage.style.display = 'block';
+                footerText.style.display = 'block';
+                closeButton.style.display = 'block';
+                containerBg.style.display = 'block';
+            });
+    
+            // Add click event listener to the popup image
+            popupImage.addEventListener('click', function() {
+                
+                var index = imageSources.indexOf(popupImage.src);
+                var fileURL = fileURLs[index];
+    
+                if (index !== -1 && index < fileURLs.length) {
+                    var fileURL = fileURLs[index];
+                    var link = document.createElement('a');
+                    link.href = fileURL;
+                    link.setAttribute('download', '');
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                console.log('Index:', index);
+                    console.log('Invalid index or file URL');
+                    console.log('File URL:', fileURL);
+                    console.log('Popup image clicked');
+                }
+            });
+    
+            // Add click event listener to the close button
+            closeButton.addEventListener('click', function() {
+                popupImage.style.display = 'none';
+                footerText.style.display = 'none';
+                closeButton.style.display = 'none';
+                containerBg.style.display = 'none';
+            });
+    
+            // Get the share button element
+            var shareButton = document.getElementById('shareButton');
+    
+            // Add click event listener to the share button
+            shareButton.addEventListener('click', function() {
+                var tempInput = document.createElement('input');
+                tempInput.value = fileURLs[randomIndex];
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, 99999); /* For mobile devices */
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('Download link copied to clipboard!');
+            });
+        };
+    
+        function judgeClient() {
+            var client = '';
+            var platform = navigator.platform;
+            if (platform.includes('iPhone') || platform.includes('iPad') || platform.includes('iPod') || platform.includes('iOS')) {
+                client = 'iOS';
+            } else if (platform.includes('Android')) {
+                client = 'Android';
+            } else {
+                client = 'PC';
+            }
+            return client;
+        }
+    </script>
+    
+
+    <!-- Tracking script -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?a9b8a4fa5b8e45f51da9882027b28335";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+</html>

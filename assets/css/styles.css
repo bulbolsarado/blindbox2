@@ -4,7 +4,9 @@
 }
 
 body {
-  
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  font-style: normal;
   overflow-x: hidden;
 }
 
@@ -84,7 +86,7 @@ html, body {
   width: 98%;
     height: 64px;
     border: 0;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
 }
 #phoneNumberInput:focus {
   outline: none;
